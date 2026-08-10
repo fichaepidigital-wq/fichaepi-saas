@@ -40,6 +40,7 @@ async function handleCredentialResponse(response) {
       setStatus_(`✅ Bem-vindo(a), ${resultado.nomeEmpresa}!`, 'sucesso');
       // Guarda os dados do cliente autenticado para as próximas telas usarem
       sessionStorage.setItem('fichaepi_cliente', JSON.stringify(resultado));
+      sessionStorage.setItem('fichaepi_token_teste', googleIdToken); // TEMPORÁRIO, só para testes
     } else {
       setStatus_('⚠️ ' + resultado.error, 'erro');
     }
