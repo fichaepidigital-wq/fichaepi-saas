@@ -1,5 +1,5 @@
 const CONFIG = {
-  MASTER_API_URL: 'https://script.google.com/macros/s/AKfycbz1xQyr2brSwRWIWAvJ31AYU5CKFXRVU-8FMIqDcdTXWUI8I4dL9v2T1PyXHN1BPU7jdg/exec',
+  MASTER_API_URL: 'https://script.google.com/macros/s/AKfycbz1xQyr2brSwRWlWAvJ31AYU5CKFXRVU-8FMlqDcdTXWUI8l4dL9v2T1PyXHN1BPU7jdg/exec',
   GOOGLE_CLIENT_ID: '257482996932-0p21ql85b70gq866sd554snat7gs4eco.apps.googleusercontent.com'
 };
 
@@ -38,6 +38,7 @@ async function handleCredentialResponse(response) {
 
     if (resultado.success) {
       setStatus_(`✅ Bem-vindo(a), ${resultado.nomeEmpresa}!`, 'sucesso');
+      // Guarda os dados do cliente autenticado para as próximas telas usarem
       sessionStorage.setItem('fichaepi_cliente', JSON.stringify(resultado));
     } else {
       setStatus_('⚠️ ' + resultado.error, 'erro');
