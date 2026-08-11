@@ -135,7 +135,8 @@ document.getElementById('form-ficha').addEventListener('submit', async (e) => {
       const mensagem = encodeURIComponent(
         `Olá ${funcionario.nome}! Acesse o link abaixo no seu celular para assinar a ficha de entrega de EPI:\n${link}`
       );
-      const telefone = (funcionario.telefone || '').replace(/\D/g, '');
+      // FIX: telefone pode vir como number do Sheets — força conversão para string antes do .replace()
+      const telefone = String(funcionario.telefone || '').replace(/\D/g, '');
       document.getElementById('btn-whatsapp').href = telefone
         ? `https://wa.me/55${telefone}?text=${mensagem}`
         : `https://wa.me/?text=${mensagem}`;
