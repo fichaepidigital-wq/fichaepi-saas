@@ -71,11 +71,11 @@
   .botao-sair:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
 
   .main-area { flex: 1; min-width: 0; padding: 28px 32px 60px; }
-  .topbar {
-    display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
-  }
   .topbar h1 { margin: 0; font-size: 1.5rem; }
   .topbar p { margin: 2px 0 20px; color: var(--texto-suave); font-size: 0.9rem; }
+
+  .footer-suporte { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--borda); display: flex; justify-content: center; }
+  .footer-suporte .popover-suporte { top: auto; bottom: calc(100% + 10px); right: auto; left: 50%; transform: translateX(-50%); }
 
   .suporte-wrapper { position: relative; flex-shrink: 0; }
   .btn-suporte {
@@ -181,19 +181,8 @@
 
   <div class="main-area">
     <header class="topbar">
-      <div>
-        <h1>Registro de EPI</h1>
-        <p>Gerar link de assinatura para o funcionário</p>
-      </div>
-      <div class="suporte-wrapper">
-        <button type="button" class="btn-suporte" id="btn-precisa-ajuda">
-          <i data-lucide="help-circle"></i> Precisa de ajuda?
-        </button>
-        <div class="popover-suporte" id="popover-suporte">
-          Entre em contato com o suporte:
-          <a href="mailto:fichaepidigital@gmail.com">fichaepidigital@gmail.com</a>
-        </div>
-      </div>
+      <h1>Registro de EPI</h1>
+      <p>Gerar link de assinatura para o funcionário</p>
     </header>
 
     <main>
@@ -233,6 +222,18 @@
         <p id="status-cancelamento" class="ajuda"></p>
       </div>
     </main>
+
+    <footer class="footer-suporte">
+      <div class="suporte-wrapper">
+        <button type="button" class="btn-suporte" id="btn-precisa-ajuda">
+          <i data-lucide="help-circle"></i> Precisa de ajuda?
+        </button>
+        <div class="popover-suporte" id="popover-suporte">
+          Entre em contato com o suporte:
+          <a href="mailto:fichaepidigital@gmail.com">fichaepidigital@gmail.com</a>
+        </div>
+      </div>
+    </footer>
   </div>
 </div>
 
