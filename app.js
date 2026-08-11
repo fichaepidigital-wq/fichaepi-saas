@@ -37,10 +37,10 @@ async function handleCredentialResponse(response) {
     const resultado = await res.json();
 
     if (resultado.success) {
-      setStatus_(`✅ Bem-vindo(a), ${resultado.nomeEmpresa}!`, 'sucesso');
-      // Guarda os dados do cliente autenticado para as próximas telas usarem
+      setStatus_(`✅ Bem-vindo(a), ${resultado.nomeEmpresa}! Entrando...`, 'sucesso');
       sessionStorage.setItem('fichaepi_cliente', JSON.stringify(resultado));
-      sessionStorage.setItem('fichaepi_token_teste', googleIdToken); // TEMPORÁRIO, só para testes
+      sessionStorage.setItem('fichaepi_token', googleIdToken);
+      setTimeout(() => { window.location.href = 'painel.html'; }, 700);
     } else {
       setStatus_('⚠️ ' + resultado.error, 'erro');
     }
@@ -49,4 +49,9 @@ async function handleCredentialResponse(response) {
   }
 }
 
-initGoogleSignIn();
+// Se já estiver logado (sessão ainda válida), vai direto pro painel
+if (sessionStorage.getItem('fichaepi_cliente') && sessionStorage.getItem('fichaepi_token')) {
+  window.location.href = 'painel.html';
+} else {
+  initGoogleSignIn();
+}
