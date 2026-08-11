@@ -77,14 +77,26 @@
   .topbar h1 { margin: 0; font-size: 1.5rem; }
   .topbar p { margin: 2px 0 20px; color: var(--texto-suave); font-size: 0.9rem; }
 
+  .suporte-wrapper { position: relative; flex-shrink: 0; }
   .btn-suporte {
-    display: flex; align-items: center; justify-content: center;
-    width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 16px; border-radius: 999px;
     background: var(--surface); border: 1.5px solid var(--borda); color: var(--primary);
-    text-decoration: none; transition: background .15s, color .15s, border-color .15s;
+    font-size: 0.85rem; font-weight: 600; cursor: pointer; font-family: inherit;
+    white-space: nowrap;
   }
   .btn-suporte:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
-  .btn-suporte svg { width: 20px; height: 20px; }
+  .btn-suporte svg { width: 18px; height: 18px; }
+
+  .popover-suporte {
+    position: absolute; top: calc(100% + 10px); right: 0;
+    background: var(--sidebar-bg); color: #fff; padding: 16px 18px; border-radius: 14px;
+    font-size: 0.85rem; line-height: 1.5; width: 240px;
+    box-shadow: 0 12px 32px rgba(15,27,61,0.35);
+    display: none; z-index: 30;
+  }
+  .popover-suporte.aberto { display: block; }
+  .popover-suporte a { color: #fff; font-weight: 700; text-decoration: underline; display: inline-block; margin-top: 6px; }
 
   .cartao { background: var(--surface); border: 1px solid var(--borda); border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: var(--shadow-soft); }
   .cartao h2 { font-size: 1.05rem; margin: 0 0 16px; display: flex; align-items: center; gap: 8px; }
@@ -173,9 +185,15 @@
         <h1>Registro de EPI</h1>
         <p>Gerar link de assinatura para o funcionário</p>
       </div>
-      <a href="mailto:fichaepidigital@gmail.com" class="btn-suporte" title="Falar com o suporte">
-        <i data-lucide="life-buoy"></i>
-      </a>
+      <div class="suporte-wrapper">
+        <button type="button" class="btn-suporte" id="btn-precisa-ajuda">
+          <i data-lucide="help-circle"></i> Precisa de ajuda?
+        </button>
+        <div class="popover-suporte" id="popover-suporte">
+          Entre em contato com o suporte:
+          <a href="mailto:fichaepidigital@gmail.com">fichaepidigital@gmail.com</a>
+        </div>
+      </div>
     </header>
 
     <main>
@@ -219,6 +237,21 @@
 </div>
 
 <script src="epi.js"></script>
-<script>lucide.createIcons();</script>
+<script>
+  lucide.createIcons();
+  const btnAjuda = document.getElementById('btn-precisa-ajuda');
+  const popoverAjuda = document.getElementById('popover-suporte');
+  if (btnAjuda && popoverAjuda) {
+    btnAjuda.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popoverAjuda.classList.toggle('aberto');
+    });
+    document.addEventListener('click', (e) => {
+      if (!popoverAjuda.contains(e.target) && e.target !== btnAjuda) {
+        popoverAjuda.classList.remove('aberto');
+      }
+    });
+  }
+</script>
 </body>
 </html>
