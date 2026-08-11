@@ -107,6 +107,24 @@
   .badge.ativo { background: #d4edda; color: #155724; }
   .badge.inativo { background: #f8d7da; color: #721c24; }
   .botao-pequeno { font-size: 0.78rem !important; padding: 5px 10px !important; }
+
+  /* ---- Responsivo (celular) ---- */
+  @media (max-width: 768px) {
+    .app-shell { flex-direction: column; }
+    .sidebar-nova {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 14px 16px;
+      gap: 6px;
+    }
+    .sidebar-brand { margin-bottom: 0; margin-right: auto; }
+    .sidebar-link { width: auto; margin-bottom: 0; padding: 9px 12px; }
+    .main-area { padding: 20px 16px 40px; }
+    .main-area h1 { font-size: 1.3rem; }
+    table { display: block; overflow-x: auto; white-space: nowrap; }
+  }
 </style>
 </head>
 <body>
