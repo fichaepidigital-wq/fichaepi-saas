@@ -73,9 +73,18 @@ function adicionarLinhaItem() {
   const div = document.createElement('div');
   div.className = 'linha-item-epi';
   div.innerHTML = `
-    <input type="text" class="input-epi-nome" list="lista-nomes-epi" placeholder="Ex: Capacete de Segurança">
-    <input type="text" class="input-epi-ca" placeholder="Ex: 12345 ou N/A">
-    <input type="checkbox" class="input-epi-devolucao" title="Este EPI precisa ser devolvido">
+    <div>
+      <span class="label-campo-mobile">EPI</span>
+      <input type="text" class="input-epi-nome" list="lista-nomes-epi" placeholder="Ex: Capacete de Segurança">
+    </div>
+    <div>
+      <span class="label-campo-mobile">CA</span>
+      <input type="text" class="input-epi-ca" placeholder="Ex: 12345 ou N/A">
+    </div>
+    <div>
+      <span class="label-campo-mobile">Devolução</span>
+      <input type="checkbox" class="input-epi-devolucao" title="Este EPI precisa ser devolvido">
+    </div>
     <button type="button" class="btn-remover-item" title="Remover">✕</button>
   `;
   div.querySelector('.btn-remover-item').addEventListener('click', () => {
